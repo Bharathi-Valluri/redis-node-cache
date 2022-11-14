@@ -18,9 +18,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 function run () {
-    // const client = Redis.createClient(redis_port)
   app.use("/", router)
-
   //run server
   app.listen(port, () => {
     console.log(`server is listining at ${port}`)

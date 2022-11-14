@@ -5,7 +5,6 @@ const fetch = require('node-fetch')
 const Redis = require('redis')
 const redis_port = process.env.REDIS_PORT || 6397
 const client = Redis.createClient(redis_port)
-client.connect()
 // set Response
 function setResponse(username,repos){
     return `<h2>${username} has ${repos} Github Repos</h2>`
@@ -17,7 +16,7 @@ const getRepos = async(req,res)=>{
         const { username } =req.params
         const resp =await fetch(`https://api.github.com/users/${username}`)
         const data =await resp.json()
-        // res.send(data)
+        res.send(data)
         const repos =data.public_repos
         //set data to Redis
         client.set(username,3600 ,repos)
