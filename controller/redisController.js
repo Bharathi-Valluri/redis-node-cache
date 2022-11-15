@@ -17,10 +17,10 @@ const getRepos = async(req,res)=>{
         const resp =await fetch(`https://api.github.com/users/${username}`)
         const data =await resp.json()
         res.send(data)
-        const repos =data.public_repos
-        //set data to Redis
-        client.set(username,3600 ,repos)
-        res.send(setResponse(username,repos))
+    //    const repos =data.public_repos
+    //     // set data to Redis
+    //    client.set(username,3600 ,repos)
+    //     res.send(setResponse(username,repos))
         
         
         
